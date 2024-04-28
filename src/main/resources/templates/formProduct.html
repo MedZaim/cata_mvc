@@ -1,10 +1,62 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
+    <link rel="stylesheet" type="text/css"
+          href="../static/css/bootstrap.min.css"
+          th:href="@{/css/bootstrap.min.css}">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title> add product</title>
+    <style>
+        .full-width {
+            width: 100%;
+        }
+
+        .active {
+            color: #fff !important;
+            background-color: #0b5ed7 !important;
+            border-color: #0a58ca !important;
+            box-shadow: 0 0 0 .25rem rgba(49, 132, 253, .5) !important;
+        }
+    </style>
 </head>
 <body>
+<p></p>
+<div class="container" style="text-align: left !important;">
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Add Product</h3>
+        </div>
+        <div class="panel-body">
+            <form th:action="@{/save}" method="post">
+                <div class="form-group">
+                    <label for="idProduct">Product ID:</label>
+                    <input  type="text" class="form-control hide" id="idProduct" name="idProduct" th:value="${product.idProduct}">
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="designation">Designation:</label>
+                    <input type="text" class="form-control" id="designation" name="designation" th:value="${product.designation}">
+                    <span th:errors="${product.designation}"></span>
+                </div>
+                <div class="form-group">
+                    <label  class="control-label" for="price">Price:</label>
+                    <input type="text" class="form-control" id="price" name="price" th:value="${product.price}">
+                    <span th:errors="${product.price}"></span>
 
+                </div>
+                <div class="form-group">
+                    <label  class="control-label" for="quantity">Quantity:</label>
+                    <input type="text" class="form-control" id="quantity" name="quantity" th:value="${product.quantity}">
+                    <span th:errors="${product.quantity}"></span>
+
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                    <button type="button" class="btn btn-secondary " onclick="window.location.href='/index'">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 </body>
 </html>
